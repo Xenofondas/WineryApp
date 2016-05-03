@@ -2,6 +2,8 @@
   "dependencies": {
     "AutoRest": "0.15.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "Microsoft.Rest.ClientRuntime": "2.1.0",
+    "Newtonsoft.Json": "8.0.3",
     "Xamarin.Forms": "2.0.0.6482"
   },
   "frameworks": {
