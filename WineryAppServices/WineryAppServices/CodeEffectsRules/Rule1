@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<codeeffects xmlns="http://codeeffects.com/schemas/rule/41" xmlns:ui="http://codeeffects.com/schemas/ui/4">
+  <rule id="97e3b953-fd43-413c-9363-5e73465f0128" webrule="4.3.2.6" utc="2017-03-18T20:44:47.6137" type="WineryAppServices.CodeEffectsRules.UserData, WineryAppServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" eval="false">
+    <name>Age_rank_Rule</name>
+    <definition>
+      <if>
+        <clause>
+          <condition type="equal" stringComparison="OrdinalIgnoreCase">
+            <property name="UserAgeRank" />
+            <value>21-29</value>
+          </condition>
+        </clause>
+        <then>
+          <set>
+            <property name="ConsumptionFrequency" />
+            <value>Rare</value>
+          </set>
+        </then>
+      </if>
+    </definition>
+    <format>
+      <lines />
+    </format>
+  </rule>
+</codeeffects>

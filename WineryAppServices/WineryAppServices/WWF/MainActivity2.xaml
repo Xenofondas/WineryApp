@@ -1,0 +1,707 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="WineryAppServices.WWF.MainActivity2"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:local="clr-namespace:WineryAppServices.Models"
+ xmlns:local1="clr-namespace:WineryAppServices.WWF"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="UserAgeRank" Type="InArgument(x:String)" />
+    <x:Property Name="EducationLevel" Type="InArgument(x:String)" />
+    <x:Property Name="HouseholdIncome" Type="InArgument(x:String)" />
+    <x:Property Name="WineRelation" Type="InArgument(x:String)" />
+    <x:Property Name="Ethnicbackground" Type="InArgument(x:String)" />
+    <x:Property Name="ConsumptionFrequency" Type="InArgument(x:String)" />
+    <x:Property Name="PriceRange" Type="InArgument(x:String)" />
+    <x:Property Name="RecommendedListFinal" Type="OutArgument(scg:List(x:Int32))" />
+    <x:Property Name="FinalWineList" Type="OutArgument(scg:List(local:Wine))" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>WineryAppServices.WWF.MainActivity2_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>EntityFramework</AssemblyReference>
+      <AssemblyReference>EntityFramework.SqlServer</AssemblyReference>
+      <AssemblyReference>Microsoft.AI.Agent.Intercept</AssemblyReference>
+      <AssemblyReference>Microsoft.AI.DependencyCollector</AssemblyReference>
+      <AssemblyReference>Microsoft.AI.PerfCounterCollector</AssemblyReference>
+      <AssemblyReference>Microsoft.AI.ServerTelemetryChannel</AssemblyReference>
+      <AssemblyReference>Microsoft.AI.Web</AssemblyReference>
+      <AssemblyReference>Microsoft.AI.WindowsServer</AssemblyReference>
+      <AssemblyReference>Microsoft.ApplicationInsights</AssemblyReference>
+      <AssemblyReference>Microsoft.CodeDom.Providers.DotNetCompilerPlatform</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Rest.ClientRuntime</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>Swashbuckle.Core</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Net</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Web.Entity</AssemblyReference>
+      <AssemblyReference>System.Web.ApplicationServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.DataAnnotations</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Web</AssemblyReference>
+      <AssemblyReference>System.Web.Abstractions</AssemblyReference>
+      <AssemblyReference>System.Web.Routing</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>Microsoft.Web.Infrastructure</AssemblyReference>
+      <AssemblyReference>System.Net.Http</AssemblyReference>
+      <AssemblyReference>System.Net.Http.Formatting</AssemblyReference>
+      <AssemblyReference>System.Net.Http.WebRequest</AssemblyReference>
+      <AssemblyReference>System.Web.Helpers</AssemblyReference>
+      <AssemblyReference>System.Web.Http</AssemblyReference>
+      <AssemblyReference>System.Web.Http.WebHost</AssemblyReference>
+      <AssemblyReference>System.Web.Mvc</AssemblyReference>
+      <AssemblyReference>System.Web.Optimization</AssemblyReference>
+      <AssemblyReference>System.Web.Razor</AssemblyReference>
+      <AssemblyReference>System.Web.WebPages</AssemblyReference>
+      <AssemblyReference>System.Web.WebPages.Deployment</AssemblyReference>
+      <AssemblyReference>System.Web.WebPages.Razor</AssemblyReference>
+      <AssemblyReference>WebActivatorEx</AssemblyReference>
+      <AssemblyReference>WebGrease</AssemblyReference>
+      <AssemblyReference>Antlr3.Runtime</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>WineryAppServices</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="scg:List(x:Int32)" Name="RecommendedList" />
+      <Variable x:TypeArguments="scg:List(local:Wine)" Name="FetchedList" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+        <Switch x:TypeArguments="x:String" DisplayName="User age rank" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+          <Switch.Expression>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String">UserAgeRank</mca:CSharpValue>
+            </InArgument>
+          </Switch.Expression>
+          <Assign x:Key="21-29" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:List(x:Int32)">
+                <mca:CSharpReference x:TypeArguments="scg:List(x:Int32)">RecommendedList</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:List(x:Int32)">
+                <mca:CSharpValue x:TypeArguments="scg:List(x:Int32)">new List&lt;int&gt; {1,3,4,5,7,8,9,10,16}</mca:CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="30-49" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:List(x:Int32)">
+                <mca:CSharpReference x:TypeArguments="scg:List(x:Int32)">RecommendedList</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:List(x:Int32)">
+                <mca:CSharpValue x:TypeArguments="scg:List(x:Int32)">new List&lt;int&gt; {1,3,5,6,7,8,10,13,15}</mca:CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="50-59" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:List(x:Int32)">
+                <mca:CSharpReference x:TypeArguments="scg:List(x:Int32)">RecommendedList</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:List(x:Int32)">
+                <mca:CSharpValue x:TypeArguments="scg:List(x:Int32)">new List&lt;int&gt; {1,3,5,7,8,9,10,11,13,15,16}</mca:CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="60 and over" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:List(x:Int32)">
+                <mca:CSharpReference x:TypeArguments="scg:List(x:Int32)">RecommendedList</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:List(x:Int32)">
+                <mca:CSharpValue x:TypeArguments="scg:List(x:Int32)">new List&lt;int&gt; {1,2,3,5,7,8,9,10,11,12,13,15}</mca:CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+        </Switch>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+            <Switch x:TypeArguments="x:String" DisplayName="Education Level" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+              <Switch.Expression>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">EducationLevel</mca:CSharpValue>
+                </InArgument>
+              </Switch.Expression>
+              <Sequence x:Key="High School" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_8" Item="1">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_9" Item="8">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_10" Item="2">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+              </Sequence>
+              <Sequence x:Key="Some college" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_11" Item="13">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_12" Item="10">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_13" Item="6">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+              </Sequence>
+              <Sequence x:Key="Completed undergraduate college degree" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_14" Item="1">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_15" Item="5">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_16" Item="9">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+              </Sequence>
+              <Sequence x:Key="Post-graduate" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_5" Item="3">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_6" Item="5">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_7" Item="8">
+                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                  </InArgument>
+                </RemoveFromCollection>
+              </Sequence>
+            </Switch>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                <Switch x:TypeArguments="x:String" DisplayName="Wine Relation" sap2010:WorkflowViewState.IdRef="Switch`1_4">
+                  <Switch.Expression>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String">WineRelation</mca:CSharpValue>
+                    </InArgument>
+                  </Switch.Expression>
+                  <RemoveFromCollection x:TypeArguments="x:Int32" x:Key="Restaurant" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_17" Item="4">
+                    <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                      <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                    </InArgument>
+                  </RemoveFromCollection>
+                  <RemoveFromCollection x:TypeArguments="x:Int32" x:Key="wine producer" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_18" Item="7">
+                    <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                      <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                    </InArgument>
+                  </RemoveFromCollection>
+                  <RemoveFromCollection x:TypeArguments="x:Int32" x:Key="retailer of wine" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_19" Item="10">
+                    <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                      <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                    </InArgument>
+                  </RemoveFromCollection>
+                  <RemoveFromCollection x:TypeArguments="x:Int32" x:Key="Advertising" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_20" Item="15">
+                    <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                      <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                    </InArgument>
+                  </RemoveFromCollection>
+                  <x:Null x:Key="Consumer" />
+                </Switch>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                    <Switch x:TypeArguments="x:String" DisplayName="Ethnicbackground" sap2010:WorkflowViewState.IdRef="Switch`1_5">
+                      <Switch.Expression>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String">Ethnicbackground</mca:CSharpValue>
+                        </InArgument>
+                      </Switch.Expression>
+                      <Sequence x:Key="Asian" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_22" Item="9">
+                          <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                            <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                          </InArgument>
+                        </RemoveFromCollection>
+                      </Sequence>
+                      <RemoveFromCollection x:TypeArguments="x:Int32" x:Key="African American" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_23" Item="11">
+                        <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                          <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                        </InArgument>
+                      </RemoveFromCollection>
+                      <RemoveFromCollection x:TypeArguments="x:Int32" x:Key="Hispanic" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_24" Item="12">
+                        <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                          <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                        </InArgument>
+                      </RemoveFromCollection>
+                      <RemoveFromCollection x:TypeArguments="x:Int32" x:Key="Caucasian" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_25" Item="7">
+                        <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                          <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                        </InArgument>
+                      </RemoveFromCollection>
+                      <x:Null x:Key="Other" />
+                    </Switch>
+                    <FlowStep.Next>
+                      <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                        <Switch x:TypeArguments="x:String" DisplayName="Consumption Frequency" sap2010:WorkflowViewState.IdRef="Switch`1_6">
+                          <Switch.Expression>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String">ConsumptionFrequency</mca:CSharpValue>
+                            </InArgument>
+                          </Switch.Expression>
+                          <RemoveFromCollection x:TypeArguments="x:Int32" x:Key="Yes, regularly consumed" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_26" Item="3">
+                            <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                              <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                            </InArgument>
+                          </RemoveFromCollection>
+                          <RemoveFromCollection x:TypeArguments="x:Int32" x:Key="Special occasions only" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_27" Item="9">
+                            <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                              <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                            </InArgument>
+                          </RemoveFromCollection>
+                          <x:Null x:Key="Rarely" />
+                          <x:Null x:Key="Never" />
+                        </Switch>
+                        <FlowStep.Next>
+                          <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+                            <Switch x:TypeArguments="x:String" DisplayName="PriceRange" sap2010:WorkflowViewState.IdRef="Switch`1_7">
+                              <Switch.Expression>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">PriceRange</mca:CSharpValue>
+                                </InArgument>
+                              </Switch.Expression>
+                              <x:Null x:Key="Under $10" />
+                              <Sequence x:Key="$10-$20" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_28" Item="2">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_29" Item="5">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_30" Item="9">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_31" Item="4">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_32" Item="11">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_33" Item="12">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_34" Item="13">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_35" Item="15">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_36" Item="16">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                              </Sequence>
+                              <Sequence x:Key="$20-$50" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_37" Item="13">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_38" Item="15">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                                <RemoveFromCollection x:TypeArguments="x:Int32" DisplayName="RemoveFrom RecommendedList" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_39" Item="16">
+                                  <InArgument x:TypeArguments="scg:ICollection(x:Int32)">
+                                    <mca:CSharpValue x:TypeArguments="scg:ICollection(x:Int32)">RecommendedList</mca:CSharpValue>
+                                  </InArgument>
+                                </RemoveFromCollection>
+                              </Sequence>
+                              <x:Null x:Key="over $50" />
+                            </Switch>
+                            <FlowStep.Next>
+                              <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+                                <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="scg:List(x:Int32)">
+                                      <mca:CSharpReference x:TypeArguments="scg:List(x:Int32)">RecommendedListFinal</mca:CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="scg:List(x:Int32)">
+                                      <mca:CSharpValue x:TypeArguments="scg:List(x:Int32)">RecommendedList</mca:CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_11">
+                                    <local1:FetchRecommendedWines sap2010:WorkflowViewState.IdRef="FetchRecommendedWines_1">
+                                      <local1:FetchRecommendedWines.OutList>
+                                        <OutArgument x:TypeArguments="scg:List(local:Wine)">
+                                          <mca:CSharpReference x:TypeArguments="scg:List(local:Wine)">FetchedList</mca:CSharpReference>
+                                        </OutArgument>
+                                      </local1:FetchRecommendedWines.OutList>
+                                      <local1:FetchRecommendedWines.WineIDs>
+                                        <InArgument x:TypeArguments="scg:List(x:Int32)">
+                                          <mca:CSharpValue x:TypeArguments="scg:List(x:Int32)">RecommendedListFinal</mca:CSharpValue>
+                                        </InArgument>
+                                      </local1:FetchRecommendedWines.WineIDs>
+                                    </local1:FetchRecommendedWines>
+                                    <FlowStep.Next>
+                                      <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_10">
+                                        <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="scg:List(local:Wine)">
+                                              <mca:CSharpReference x:TypeArguments="scg:List(local:Wine)">FinalWineList</mca:CSharpReference>
+                                            </OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="scg:List(local:Wine)">
+                                              <mca:CSharpValue x:TypeArguments="scg:List(local:Wine)">FetchedList</mca:CSharpValue>
+                                            </InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                      </FlowStep>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </FlowStep.Next>
+                          </FlowStep>
+                        </FlowStep.Next>
+                      </FlowStep>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Switch`1_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_8" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_9" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_10" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="222,270">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_11" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_12" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_13" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="222,270">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_14" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_15" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_16" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="222,270">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_5" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_6" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_7" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222,270">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Switch`1_2" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_17" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_18" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_19" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_20" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Switch`1_4" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_22" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="222,146">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_23" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_24" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_25" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Switch`1_5" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_26" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_27" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Switch`1_6" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_28" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_29" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_30" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_31" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_32" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_33" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_34" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_35" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_36" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="222,642">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_37" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_38" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_39" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="222,270">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Switch`1_7" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FetchRecommendedWines_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_10">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">818.895,769.01953125</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_11">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">840,699</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">940,721 940,751 939.895,751 939.895,769.01953125</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">829,579</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">950,641 950,671 940,671 940,699</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">410,744.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">510,795.5 510,820 799,820 799,610 829,610</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">410,624.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">510,675.5 510,744.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">410,484.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">510,535.5 510,624.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">410,364.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">510,415.5 510,484.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">410,244.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">510,295.5 510,364.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">410,124.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">510,175.5 510,244.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="1218,881">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">480,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <x:Double x:Key="Width">1204</x:Double>
+            <x:Double x:Key="Height">845.01953125</x:Double>
+            <av:PointCollection x:Key="ConnectorLocation">510,77.5 510,124.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WineryAppServices.WWF.MainActivity2_1" sap:VirtualizedContainerService.HintSize="1258,961" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

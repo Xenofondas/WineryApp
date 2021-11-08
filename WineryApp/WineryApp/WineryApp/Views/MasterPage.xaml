@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WineryApp.Views.MasterPage"
+             Title="WineryApp"
+             BackgroundColor="Aqua"
+             BackgroundImage="MasterBackg.jpg">   
+
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="FillAndExpand" Padding="2" x:Name="masterLayout" >
+                
+                <Label Text="WinneryApp" 
+                       BackgroundColor="Teal" 
+                       TextColor="Black" 
+                       VerticalOptions="StartAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="Medium"
+                       YAlign="Center"/>
+
+                <Button Text="Profile" x:Name="ProfileButton" FontAttributes="Bold" />
+
+            <Button Text="Wines" x:Name="WinesListButton" FontAttributes="Bold" />
+
+            <Button Text="Questionaire" x:Name="Pbutton" FontAttributes="Bold" />
+
+            <Button Text="Our Recommendation" x:Name="RecButton" FontAttributes="Bold"/>
+
+
+
+            <StackLayout Orientation="Vertical"
+                                    VerticalOptions="EndAndExpand">
+
+                    <Button Text="Logout" 
+                            FontAttributes="Bold"
+                            BackgroundColor="Teal"
+                            Image="Assets/logout.png"
+                            Clicked="LogoutButton"
+                            VerticalOptions="End"/>
+            </StackLayout>  
+
+            </StackLayout>
+
+        </ContentPage.Content>
+
+
+
+    
+    
+</ContentPage>

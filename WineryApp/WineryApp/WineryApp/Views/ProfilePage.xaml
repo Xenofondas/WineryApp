@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="WineryApp.Views.ProfilePage"             
+             Title="Profile"
+             BackgroundColor="White">
+
+    <!--<ContentPage.BindingContext>
+        <Viewmodels:ProfileViewModel.Create/>
+    </ContentPage.BindingContext>-->
+
+    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+        <Label Text="The User's Profile" HorizontalOptions="CenterAndExpand" FontSize="Medium" VerticalOptions="StartAndExpand"/>
+
+        <Label Text="User First Name:" HorizontalOptions="CenterAndExpand"/>
+        <Label Text="{Binding UserProfile.FirstName , Mode=TwoWay }"  HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+
+        <Label Text="User Last Name:" HorizontalOptions="CenterAndExpand"/>
+        <Label Text="{Binding UserProfile.LastName}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+
+        <Label Text="User Email:" HorizontalOptions="CenterAndExpand"/>
+        <Label Text="{Binding UserProfile.UserEmail}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+
+        <ActivityIndicator IsRunning="True" IsVisible="{Binding IsLoading, Mode=OneWay}" Color="Black" VerticalOptions="FillAndExpand"/>
+
+    </StackLayout>
+
+    <!--<ActivityIndicator  IsRunning="True" IsVisible="{Binding IsLoading}"
+            VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=0.33}"
+                               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=0.33}"/>-->
+    
+</ContentPage>

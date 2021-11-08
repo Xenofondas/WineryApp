@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WineryApp.Views.WinesListView"
+             BackgroundColor="White"
+             Title="Wines Collection">
+
+    <StackLayout Orientation="Vertical">
+        <Label Text="Here are the best greek wines out there." 
+               HorizontalOptions="Center" 
+               Margin="5"
+               FontSize="Medium"/>
+
+        <ActivityIndicator IsRunning="True" IsVisible="{Binding IsLoading, Mode=OneWay}" Color="Black"/>
+        <ListView ItemsSource="{Binding WinesList}" 
+                  HasUnevenRows = "True"
+                  BackgroundColor="White">                  
+                  
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        
+                        <Grid Padding="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>                                
+                            </Grid.RowDefinitions>
+
+                            
+                            <Grid Grid.Column="0">
+                                <Image Source="{Binding WineImage}" Aspect="AspectFill" />
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
+                                    <Label Text="{Binding Title}" FontSize="Medium" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Variety,StringFormat='Variety: {0:N}'}"/>
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Price,StringFormat='Price : {0:N}€'}"/>        
+
+                                </StackLayout>
+                            </Grid>
+                            
+                        </Grid>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        
+    </StackLayout>
+	
+</ContentPage>

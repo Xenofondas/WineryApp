@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WineryApp.Views.LoginButton"
+             BackgroundColor="Gray">
+    
+    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="CenterAndExpand"
+                 VerticalOptions="Center">
+
+        
+        <Grid x:Name="LoginButtonGrid">
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </Grid.GestureRecognizers>
+
+
+        </Grid>
+        
+        
+    </StackLayout>
+    
+</ContentPage>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WineryApp.Views.Recommendation"
+             BackgroundColor="White"
+             Title="Recommendation">
+    <StackLayout Orientation="Vertical">
+        <Label Text="We highly recommend tou to taste the above wines!" 
+               HorizontalOptions="Center"
+               FontSize="Medium"
+               FontAttributes="Bold"/>
+
+        <StackLayout Orientation="Horizontal" Spacing="0">
+            <Label Text="Rule-Based Recommendation" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+            <Switch IsToggled="{Binding isOn, Mode=TwoWay}" HorizontalOptions="End"  VerticalOptions="Center" />
+        </StackLayout>
+
+        <!--<Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Label Text="Rule-Based Recommendation" FontSize="Medium"  />
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Switch IsToggled="{Binding isOn, Mode=TwoWay}" HorizontalOptions="End" VerticalOptions="Center" />
+            </Grid>
+            
+        </Grid>-->
+
+
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsLoading, Mode=OneWay}" Color="Black"/>
+        <Label Text="First you need to complete the survay!" IsVisible="{Binding SurveyMessage ,Mode=TwoWay}" />        
+        <ListView ItemsSource="{Binding WinesList}" 
+                  HasUnevenRows = "True"
+                  BackgroundColor="White">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <Grid Padding="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>                      
+
+
+                            <Grid Grid.Column="0">
+                                <Image Source="{Binding WineImage}" Aspect="AspectFill" />
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
+                                    <Label Text="{Binding Title}" FontSize="Medium" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Variety,StringFormat='Variety: {0:N}'}"/>
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Price,StringFormat='Price : {0:N}€'}"/>
+
+
+                                </StackLayout>
+                            </Grid>
+
+                        </Grid>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>

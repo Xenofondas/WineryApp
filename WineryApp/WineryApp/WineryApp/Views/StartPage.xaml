@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WineryApp.Views.StartPage"
+             Title="WineryApp-Start page"
+             BackgroundColor="White">
+    <StackLayout>
+
+        <Label Text="Wellcome to WineryApp"
+           VerticalOptions="Start"
+           HorizontalOptions="Center"
+           FontSize="Large"
+               Margin="40"/>
+        <Label Text="Instructions:" FontAttributes="Bold" VerticalOptions="Center" TextColor="Red"/>
+        <Label Text="1. In order to see our recommendation you have to go to the Questionaire tab .
+               Answer 7 questions and you are ready." VerticalOptions="Center"/>
+        <Label Text="2. Now go to the Recommndation tab to see the recommended wines for you!" VerticalOptions="Center"/>
+        <Label Text="There is also a Profile tab in wich you can see the profile connected to this app." />
+
+    </StackLayout>
+	
+
+
+</ContentPage>

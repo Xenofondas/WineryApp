@@ -1,0 +1,36 @@
+﻿
+
+@{
+    ViewBag.Title = "Rule Editor";
+
+    Html.CodeEffects().Styles()
+        .SetTheme(ThemeType.Gray)
+        .Render();
+}
+@using (Html.BeginForm("Evaluate", "Post", FormMethod.Post))
+{
+    <div class="area">
+        <h1 class="title">Post Example</h1>
+        <div style="margin-top:10px;">
+            <span>Info:</span>
+            <span style="color:Red;">@ViewBag.Message</span>
+        </div>
+        <div style="margin-top:10px;">
+            @{    Html.CodeEffects().RuleEditor()
+                    .Id("ruleEditor")
+                    .SaveAction("Save", "Rules")
+                    .DeleteAction("Delete", "Post")
+                    .LoadAction("Load", "Post")
+                    .Mode(RuleType.Execution)
+                    .ContextMenuRules(ViewBag.ContextMenuRules)
+                    .ToolBarRules(ViewBag.ToolBarRules)
+                    .Rule(ViewBag.Rule)
+                    .Render();
+            }
+        </div>
+    </div>
+
+                }
+@{
+    Html.CodeEffects().Scripts().Render();
+}

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:WineryApp.Controls;assembly=WineryApp"
+             xmlns:ViewModel="clr-namespace:WineryApp.ViewModels;assembly=WineryApp"
+             x:Class="WineryApp.Views.Questionnaire"
+             Title="Questionnaire"
+             BackgroundColor="White">
+
+    <!--<ContentPage.BindingContext>
+        <ViewModel:QuestionairViewModel/>
+    </ContentPage.BindingContext>-->
+    
+    <StackLayout Orientation="Vertical" Padding="18">
+
+        <Label Text="{Binding SurveyMessage}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+        
+        <Label x:Name="QuestionnLabel" Text="{Binding QuestionTitle}" HorizontalOptions="CenterAndExpand" 
+               FontSize="Medium"/>
+
+        <ListView ItemsSource="{Binding answersList}" 
+                  HorizontalOptions="Center"
+                  BackgroundColor="White"
+                  SelectedItem="{Binding SelectedAnswer}"
+                  IsVisible="{Binding IsListVisible}"
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding AnswerText}" DetailColor="Black"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy, Mode=TwoWay}" Color="Black"/>
+
+        <Button x:Name="NextButton" Text="{Binding ButtonTitle}" 
+                BackgroundColor="Teal"
+                Command="{Binding FetchNextQueationCommand}"
+                HorizontalOptions="Center"
+                IsVisible="{Binding ButtonVisibility}"/>
+        <Label Text="{Binding NullResponse}" TextColor="Red" HorizontalOptions="Center"/>    
+        
+    </StackLayout>
+
+    
+
+</ContentPage>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="WineryApp.Views.RootPage"
+                  xmlns:Local="clr-namespace:WineryApp.Views;assebmly=WineryApp"
+                  MasterBehavior="Popover">                
+
+
+    <MasterDetailPage.Master>        
+                <Local:MasterPage x:Name="masterPage" />           
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <Local:StartPage/>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+    
+    
+</MasterDetailPage>
